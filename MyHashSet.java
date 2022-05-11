@@ -11,5 +11,22 @@ public class MyHashSet {
         }
     }
 
-    
+    protected int _hash(int key){
+        return(key % this.keyRange);
+    }
+
+    public void add(int key){
+        int bucketIndex = this._hash(key);
+        this.bucketArray[bucketIndex].insert(key);
+    }
+
+    public void remove(int key){
+        int bucketIndex = this._hash(key);
+        this.bucketArray[bucketIndex].delete(key);
+    }
+
+    public boolean contains(int key){
+        int bucketIndex = this._hash(key);
+        return this.bucketArray[bucketIndex].exists(key);
+    }
 }
