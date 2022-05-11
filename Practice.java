@@ -35,7 +35,33 @@ public class Practice {
         }
         return 0;
     }
-
-
     
+    // Given two integer arrays nums1 and nums2, return an array of their
+    // intersection. Each element in the result must be unique and you may return
+    // the result in any order.
+
+    public int[] intersection(int[] nums1, int[] nums2){
+
+        //add nums in nums1 to Hashset 
+        HashSet<Integer> set = new HashSet<>();
+        for(int i : nums1){
+            set.add(i);
+        }
+
+        //check to see if we have any duplicate nums in the array nums1 & nums2
+        HashSet<Integer> intersection = new HashSet<>();
+        for(int i : nums2){
+            if(set.contains(i)){
+                intersection.add(i);
+            }
+        }
+
+        int[] result = new int[intersection.size()];
+        int index = 0;
+        for(int i : intersection){
+            result[index] = i;
+            index++;
+        }
+        return result;
+    }
 }
